@@ -8,18 +8,18 @@ public class MyObject {
 	
 
 	private int id;
-	@JsonProperty
 	private String name;
 	private Date date;
 	
 	
 	public MyObject(){
-		setId(1);
-		setName("thing");
-		setDate(new Date());
+		id = 1;
+		name = "thing";
+		date = new Date();
 	}
 
 
+	@JsonProperty
 	public String getName() {
 		System.out.println("Name just got get!");
 		return name;
