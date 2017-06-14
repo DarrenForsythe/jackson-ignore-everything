@@ -1,8 +1,8 @@
 package com.darrenforsythe.jackson.ignore.model;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
-import org.hamcrest.core.IsEqual;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,9 +21,18 @@ public class MyObjectTest {
 	}
 	
 	@Test
-	public void testObjectMapper() throws Exception {
+	public void testObjectMapperSer() throws Exception {
 		String myObjectString = objectMapper.writeValueAsString(myObject);
 		assertEquals("{\"name\":\"thing\"}", myObjectString);
 	}
+	
+	@Test
+	public void testObjectMapperDer() throws Exception{
+		myObject = objectMapper.readValue("{\"name\":\"thing\"}", MyObject.class);
+		assertEquals("thing", myObject.getName());
+		assertNotNull(myObject.getDate());
+		assertEquals(1, myObject.getId());
+	}
 
 }
+		
