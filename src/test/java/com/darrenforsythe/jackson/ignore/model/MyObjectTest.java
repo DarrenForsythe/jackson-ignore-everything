@@ -1,7 +1,8 @@
 package com.darrenforsythe.jackson.ignore.model;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
+
+import java.util.Date;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -17,7 +18,7 @@ public class MyObjectTest {
 	@Before
 	public void setup() throws Exception {
 		objectMapper = JacksonConfig.getObjectMapper();
-		myObject = new MyObject();
+		myObject = new MyObject(1, "thing", new Date());
 	}
 	
 	@Test
@@ -30,8 +31,8 @@ public class MyObjectTest {
 	public void testObjectMapperDer() throws Exception{
 		myObject = objectMapper.readValue("{\"name\":\"thing\"}", MyObject.class);
 		assertEquals("thing", myObject.getName());
-		assertNotNull(myObject.getDate());
-		assertEquals(1, myObject.getId());
+		assertNull(myObject.getDate());
+		assertEquals(0, myObject.getId());
 	}
 
 }
