@@ -5,6 +5,7 @@ import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class MyObject {
+	
 
 	private int id;
 	@JsonProperty
@@ -20,11 +21,13 @@ public class MyObject {
 
 
 	public String getName() {
+		System.out.println("Name just got get!");
 		return name;
 	}
 
 
 	public void setName(String name) {
+		System.out.println("Name just got set!");
 		this.name = name;
 	}
 
